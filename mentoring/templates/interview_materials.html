@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Interview Materials</title>
+{% endblock title %}
+
+{% block content %}
+<h1>Interview Materials</h1>
+<p>
+    Similar to your index card of forumulas for your maths tests, you should have such tools for interviewing.
+</p>
+
+
+<h2>Project Index</h2>
+<p>
+    I like to create a nice index of the projects I will reference while answering interview questions.
+</p>
+<table class="table table-dark table-hover">
+  <tr>
+    <th scope="col">Notable Features</th>
+    <th scope="col">Project Name</th>
+    <th scope="col">Title</th>
+    <th scope="col">Technologies Used</th>
+  </tr>
+  <tr class="table-info">
+    <td>Cross-Team</td>
+    <td>Jenkins -> CircleCI (Project Lead)</td>
+    <td>Sr</td>
+    <td>CircleCI</td>
+  </tr>
+  <tr class="table-info">
+    <td>Cross-Team</td>
+    <td>Integration Test Suite</td>
+    <td>Sr</td>
+    <td>Java, TestNG</td>
+  </tr>
+  <tr class="table-primary">
+    <td>Architecture</td>
+    <td>Monolith Patterns</td>
+    <td>Sr</td>
+    <td>Django</td>
+  </tr>
+  <tr class="table-primary">
+    <td>Architecture, Leadership</td>
+    <td>RISv2 Monitoring (Project Lead)</td>
+    <td>Sr</td>
+    <td>Kotlin, Prometheus, Alertmanager</td>
+  </tr>
+  <tr class="table-primary">
+    <td>Leadrship, Consumer-Focused</td>
+    <td>Hackathon - Templating CRAIG (Winner)</td>
+    <td>Sr</td>
+    <td>Golang, Bash</td>
+  </tr>
+  <tr class="table-primary">
+    <td>Quality, Consumer-Focused</td>
+    <td>Hackathon - Set up Monoltih Locally</td>
+    <td>Sr</td>
+    <td>Bash, Makefile, Django, Python</td>
+  </tr>
+  <tr class="table-primary">
+    <td>Quality, Consumer-Focused</td>
+    <td>Hackathon - Reduce Docker Build Logs</td>
+    <td>Sr</td>
+    <td>Docker, Python, webpack</td>
+  </tr>
+  <tr class="table-primary">
+    <td>Quality, Leadership</td>
+    <td>New Agile Workflow (Project Lead)</td>
+    <td>Sr</td>
+    <td>Agile</td>
+  </tr>
+  <tr class="table-danger">
+    <td>Complex, Refactoring</td>
+    <td>Segfire Batch (And Refactor)</td>
+    <td>Sr</td>
+    <td>Java, Docker, AWS Batch, AWS Step Functions, AWS Lambda</td>
+  </tr>
+  <tr class="table-danger">
+    <td>Quality, Consumer-Focused</td>
+    <td>Seeder Script (Project Lead)</td>
+    <td>E2</td>
+    <td>Bash, Java</td>
+  </tr>
+  <tr class="table-danger">
+    <td>Clever Solution</td>
+    <td>FILO Rewrite</td>
+    <td>E2</td>
+    <td>Golang, Java, AWS Step Functions, AWS Lambda, AWS S3</td>
+  </tr>
+  <tr class="table-danger">
+    <td>Quality, Consumer-Focused</td>
+    <td>Hackathon - Parallelize Behavior Tests (Winner)</td>
+    <td>E2</td>
+    <td>Cucumber, Selenium, Jenkins</td>
+  </tr>
+  <tr class="table-danger">
+    <td>POC, Leadership</td>
+    <td>Contribution Reports (Project Lead)</td>
+    <td>E1</td>
+    <td>Python, PySpark, Hadoop, Amazon S3, boto3</td>
+  </tr>
+  <tr class="table-danger">
+    <td></td>
+    <td>Company Rebrand</td>
+    <td>E1</td>
+    <td>PHP, Localization, Mustache, JavaScript</td>
+  </tr>
+</table>
+
+<h2>Normal Question Index</h2>
+<p>
+    There are some common questions and I like to have a visual helper to determine which project I want to talk about.
+</p>
+<table class="table table-hover table-striped">
+    <tr>
+      <th scope="col">Tell me about...</th>
+      <th scope="col">Large Epics</th>
+      <th scope="col">Small Projects</th>
+    </tr>
+    <tr>
+      <th scope="row">your most challenging project</th>
+      <td>Segfire Batch / FILO Rewrite</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">a time you learning something</th>
+      <td>Contribution Reports</td>
+      <td>Parallelize Behavior Tests</td>
+    </tr>
+    <tr>
+        <th scope="row">something that was very interesting</th>
+        <td>
+            Monolith Patterns<br>
+            Segfire Batch
+        </td>
+        <td>
+            Parallelize Behavior Tests<br>
+            Templating CRAIG
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">your hardest bug</th>
+        <td>Segfire Batch</td>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="row">something you enjoyed the most</th>
+        <td>RISv2 Mock HTTP Service</td>
+        <td>
+            Reducing Docker Build Logs<br>
+            Run Monolith Locally
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">a conflict with teammates</th>
+        <td>Contribution Reports</td>
+        <td>New Agile Workflow</td>
+      </tr>
+  </table>
+
+{% endblock content %}

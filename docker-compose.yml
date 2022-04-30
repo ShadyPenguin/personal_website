@@ -1,0 +1,13 @@
+version: '2'
+services:
+  django:
+    image: gitlab.provvedo.com:5050/jake/personal-website:latest
+    build: .
+
+  nginx:
+    build:
+      dockerfile: nginx-Dockerfile
+    ports:
+      - 80:80
+    depends_on:
+      - django

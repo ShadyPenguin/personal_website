@@ -1,0 +1,59 @@
+workflow:
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH
+
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [""]
+  dependencies: []
+  variables:
+    IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG
+    IMAGE_SHA: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+  script:
+    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
+    - /kaniko/executor --cache=true --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --build-arg GITLAB_ID_RSA="$GITLAB_ID_RSA" --build-arg KNOWN_HOSTS="$KNOWN_HOSTS" --destination $IMAGE_SHA --destination $IMAGE_TAG
+  rules:
+    - if: '$CI_COMMIT_TAG || $CI_COMMIT_BRANCH'
+
+# test:
+#   stage: test
+#   image:
+#     name: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+#     entrypoint: [""]
+#   variables:
+#     env: TEST
+#   script:
+#     - echo "Starting Application Test"
+#     - python manage.py test .
+#     - echo "Application Test Finished"
+#   rules:
+#     - if: '$CI_COMMIT_TAG'
+#       when: never
+#     - if: '$CI_COMMIT_BRANCH'
+
+deploy:
+  stage: deploy
+  image:
+    name: ubuntu:bionic
+  script:
+      - apt-get update
+      - apt install -yy --no-install-recommends openssh-client
+      - echo "Deploying to Digital Ocean"
+      - echo "${DIGITAL_OCEAN_PRIVATE_KEY}" > digital_ocean_id_rsa
+      - chmod 600 digital_ocean_id_rsa
+      - chmod a+x deploy.sh
+      - scp -o "StrictHostKeyChecking=no" -i digital_ocean_id_rsa deploy.sh root@${DIGITAL_OCEAN_HOST_IP}:/root/deploy.sh
+      - scp -o "StrictHostKeyChecking=no" -i digital_ocean_id_rsa docker-compose.yml root@${DIGITAL_OCEAN_HOST_IP}:/root/docker-compose.yml
+      - scp -o "StrictHostKeyChecking=no" -i digital_ocean_id_rsa nginx-Dockerfile root@${DIGITAL_OCEAN_HOST_IP}:/root/nginx-Dockerfile
+      - ssh ${DIGITAL_OCEAN_HOST_IP} -o "StrictHostKeyChecking=no" -i digital_ocean_id_rsa USERNAME=${CI_DEPLOY_USER} PASSWORD=${CI_DEPLOY_PASSWORD} sh /root/deploy.sh
+  rules:
+    - if: '$CI_COMMIT_TAG'
+      when: never
+    - if: '$CI_COMMIT_BRANCH'

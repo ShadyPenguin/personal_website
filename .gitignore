@@ -1,0 +1,5 @@
+*.pyc
+*.sqlite3
+# Compiled static files
+static/*
+# packages still WIP

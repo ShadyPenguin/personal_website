@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Interview Questions</title>
+{% endblock title %}
+
+{% block content %}
+<h1>Technical Interview Questions</h1>
+<p>
+    I do not think all of these questions are amazing, these are moreso so you
+    can get a general idea of what to expect.
+    Each company and interviewer is different and they will ask their own questions. So I
+    recommend you spend more time being able to talk about what you've done than be able
+    to answer these questions.
+</p>
+<h2>Backend</h2>
+<ul>
+    <li>
+        Create a CRUD API for movies with the following data structure<br>
+        <code>{"id": 1, "Title": "Becoming Nobody", "author": "Ram Dass"}</code>
+    </li>
+    <li>Leverage Object Oriented Programming to shuffle a deck of cards</li>
+    <li>Create a program that will determine if a string is a permutable palindrome</li>
+    <li>Determine if a string contains duplicate characters. What if you can't use recursion / iteration?</li>
+    <li>
+        Print an org chart with the following information:<br>
+        <code>
+            1,jake,0<br>
+            0,sally,None<br>
+            3,susan,1<br>
+            2,jeff,1<br>
+        </code>
+    </li>
+    <li>Write a binary search algorithm</li>
+    <li>Print all of the duplicate characters of a string</li>
+    <li>What are the benefits or use cases for NoSQL vs SQL databases</li>
+    <li>Describe a state machine</li>
+    <li>Determine the longest substring with no repeating characters</li>
+</ul>
+
+<h2>SRE</h2>
+<ul>
+    <li>Create a CI/CD pipeline</li>
+    <li>Given a basic webserver, create your own deployment infrastructure and deploy it</li>
+    <li>Diagram the cloud architecture of a web commerce site (including the networking)</li>
+    <li>Through what means can an SRE provide confidence to developers about Friday deploys</li>
+    <li>Explain the trade offs between monoliths and microservices. When would you opt for one vs the other?</li>
+</ul>
+
+<h2>Front End</h2>
+<ul>
+    <li>What are some things that can improve accessibility on a website?</li>
+    <li>How do you can test to see if your site is accessible?</li>
+    <li>What are the benefits of typing?</li>
+    <li>Explain async/await</li>
+</ul>
+
+<h2>Mobile</h2>
+<ul>
+    <li></li>
+</ul>
+
+
+{% endblock content %}

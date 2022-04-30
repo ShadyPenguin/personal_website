@@ -1,0 +1,8 @@
+<h1>Subject: {{ object.subject }}</h1>
+<h2>Body: {{ object.body}}</h2>
+<h3>Comments</h3>
+
+{% for comment in object.comments.all %}
+    <h3>Author: {{ comment.author }} - {{ comment.title }}</h3>
+    <p>{{ comment.content }}</p>
+{% endfor %}

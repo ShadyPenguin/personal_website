@@ -1,0 +1,6 @@
+# NGINX
+FROM gitlab.provvedo.com:5050/jake/personal-website:latest as django_app
+
+FROM nginx:latest
+COPY --from=django_app /app/static/ /var/www/static
+COPY --from=django_app /app/nginx.conf /etc/nginx/conf.d/default.conf

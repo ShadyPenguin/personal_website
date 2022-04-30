@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block page_content %}
+{% include 'post_nav.html' %}
+<a href="/blog/posts/create">Create a new post</a>
+    {% for post in object_list %}
+        <h2><a href="/blog/posts/{{ post.pk }}">{{ post.subject }}</a></h2>
+        <p>{{ post.body }}</p>
+    {% endfor %}
+{% endblock page_content %}

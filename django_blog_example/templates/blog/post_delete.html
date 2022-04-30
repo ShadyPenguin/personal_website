@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block page_content %}
+{% include 'post_nav.html' %}
+<form method="post">{% csrf_token %}
+    <p>Are you sure you want to delete "{{ object }}"?</p>
+    <input type="submit" value="Confirm">
+    <a href="/blog/posts/"><button>Cancel</button></a>
+</form>
+{% include '_post.html' %}
+{% endblock page_content %}
