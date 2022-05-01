@@ -9,7 +9,9 @@ ENV PYTHONDONTWRITEBYTECODE 1
 # Prevents Python from buffering stdout and stderr
 ENV PYTHONUNBUFFERED 1
 # TODO: Don't copy everything
-COPY . .
+COPY personal_website personal_website
+COPY mentoring mentoring
+COPY manage.py manage.py
 EXPOSE 8000
 RUN python manage.py collectstatic --noinput
 CMD gunicorn personal_website.wsgi:application --bind 0.0.0.0:8000
